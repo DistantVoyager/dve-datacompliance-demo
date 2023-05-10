@@ -1,5 +1,9 @@
+import re
+from nautobot_data_validation_engine.custom_validators import DataComplianceRule, ComplianceError
+
 class DeviceDataComplianceRules(DataComplianceRule):
     model = "dcim.device"
+    enforce = False
     
     # Checks if a device name contains any special characters other than a dash (-), underscore (_), or period (.) using regex
     def audit_device_name_chars(self):
@@ -20,3 +24,5 @@ class DeviceDataComplianceRules(DataComplianceRule):
                 messages.update(ex.message_dict)
         if messages:
             raise ComplianceError(messages)
+
+custom_validators = [DeviceDataComplianceRules]
