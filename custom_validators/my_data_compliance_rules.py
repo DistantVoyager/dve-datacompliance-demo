@@ -20,7 +20,7 @@ class DeviceDataComplianceRules(DataComplianceRule):
         if messages:
             raise ComplianceError(messages)
 
-class DeviceDataComplianceRules(DataComplianceRule):
+class RackDeviceComplianceRules(DataComplianceRule):
     model = "dcim.device"
     enforce = False
     
